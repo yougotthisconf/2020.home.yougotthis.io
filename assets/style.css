@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('tile.png');
+    font-family: 'VT323', monospace;
+    padding-bottom: 2em;
+}
+
+a,
+a:visited {
+    color: inherit;
+}
+
+header {
+    background: white;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5em;
+}
+
+header > * {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header .left span {
+    width: 200px;
+}
+
+header img {
+    height: 2em;
+    display: block;
+    margin-right: 0.5em;
+}
+
+header span {
+    font-size: 1.25em;
+    margin: 0 0.5em;
+}
+
+.wrapper {
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.wrapper .wrapper {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+section {
+    margin-top: 2em;
+    background: white;
+    font-size: 1.25em;
+    border: 2px solid #000;
+}
+
+section .top {
+    background-image: url('button.svg'), url('lines.svg');
+    background-size: 1.5em, 2px 2em;
+    background-repeat: no-repeat, repeat-x;
+    background-position: 0.25em, center; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: 2px solid #000;
+}
+
+section .top span {
+    background: white;
+    padding: 0.5em;
+}
+
+section .content {
+    padding: 1em;
+    line-height: 1.25em;
+}
+
+section .content.table {
+    padding: 2px;
+}
+
+table, thead, tbody, tr, td {
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+}
+
+thead tr td {
+    border-bottom: 2px solid black;
+}
+
+td {
+    padding: 0.25em 0.75em;
+}
+
+thead td {
+    font-weight: bold;
+}
+
+tbody tr:first-child td {
+    padding-top: 0.75em;
+}
+
+tbody tr:last-child td {
+    padding-bottom: 0.75em;
+}
+
+.sponsors {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    padding: 1em;
+}
+.sponsor {
+    text-decoration: none;
+}
+.sponsor img {
+    width: 80%;
+    margin-left: 10%;
+}
+.sponsor p {
+    text-align: center;
+    font-weight: normal;
+    margin-top: 0.25em;
+}
+
+form {
+
+}
+
+.input-group {
+    margin-top: 1em;
+}
+
+form span {
+    margin-top: 2em;
+    display: block;
+}
+
+input {
+    font-family: 'VT323', monospace;
+}
+
+.input-group input {
+    display: block;
+    width: 100%;
+    padding: 0.25em;
+    outline: 0;
+    border: 2px solid #d7d7d7;
+    font-size: 0.8em;
+}
+
+.input-group input:focus {
+    border-color: black;
+}
+
+input[type="submit"] {
+    font-size: 1em;
+    background: black;
+    border: 0;
+    outline: 0;
+    color: white;
+    padding: 0.25em 0.75em;
+    margin-top: 2em;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dt:not(:first-child) {
+    margin-top: 2em;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 0.75em;
+    }
+
+    header .left {
+        flex-direction: column;
+    }
+    header .left span {
+        width: auto;
+        margin-bottom: 0.25em;
+    }
+    header img {
+        margin-right: 0;
+        height: 3em;
+        margin-bottom: 0.5em;
+    }
+    .sponsors {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    table, td, tr {
+        display: block;
+        width: 100%;
+    }
+    thead {
+        display: none;
+    }
+    tbody {
+        width: 100%;
+        display: block;
+        padding: 1em;
+    }
+    tr {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        flex-direction: row;
+        border: 2px solid #d7d7d7;
+        width: 100%;
+        margin-bottom: 1em;
+    }
+    td {
+        padding: 0.5em !important;
+    }
+    tr td:last-child {
+        grid-column: 1/4;
+        padding-top: 0 !important;
+        font-weight: bold;
+    }
+    td:nth-child(1):after {
+        content: ' PST'
+    }
+    td:nth-child(2):after {
+        content: ' EST'
+    }
+    td:nth-child(3):after {
+        content: ' GMT'
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sponsors {
+        padding: 1em 0;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
