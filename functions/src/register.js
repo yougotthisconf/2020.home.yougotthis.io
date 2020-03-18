@@ -28,11 +28,11 @@ exports.handler = async (event, context) => {
         const hasProvidedAddress = address && country;
         
         if(!first_name || !last_name || !email) {
-            return { headers, statusCode: 500, body: JSON.stringify({ error: 'You must provide your first name, last name and email.' }) }
+            return { headers, statusCode: 200, body: JSON.stringify({ error: 'You must provide your first name, last name and email.' }) }
         }
 
         if(await checkIfEmailExists(email)) {
-            return { headers, statusCode: 500, body: JSON.stringify({ error: 'You have already registered.' }) }
+            return { headers, statusCode: 200, body: JSON.stringify({ error: 'You have already registered.' }) }
         } else {
             let fullAddress = false;
             if(hasProvidedAddress) fullAddress = await validateAddress(address, country);

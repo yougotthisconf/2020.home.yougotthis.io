@@ -161,8 +161,8 @@
             </div>
             <div class="content">
                 <div id="form">
-                    <p>Sorry, we pushed the site with an error. Hang tight - come back in 15 mins?</p>
-                    <!-- <div v-if="!submitted && !success">
+                    <!-- <p>Sorry, we pushed the site with an error. Hang tight - come back in 15 mins?</p> -->
+                    <div v-if="!submitted && !success">
                         <p>If you provide your postal address will also send you event stickers.</p>
                         <div class="input-group">
                             <label for="fname">First Name *</label>
@@ -209,7 +209,7 @@
                         <p>You have registered succesfully. We'll send you details about the event closer to the time.</p>
                         <p v-if="response.address && response.verified">We also managed to verify your address - so we're good to go!</p>
                         <p v-if="response.address && !response.verified">We could not verify your address. We will try our best to get them to you based on the information you provided.</p>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </section>
