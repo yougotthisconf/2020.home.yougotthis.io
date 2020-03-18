@@ -49,7 +49,7 @@ exports.handler = async (event, context) => {
             }
         }
     } catch (err) {
-        console.error(JSON.stringify(err)
+        console.error(JSON.stringify(err))
         return { headers, statusCode: 500, body: JSON.stringify({ error: 'We had trouble registering you. If this error persists please email us.' }) }
     }
 }
@@ -88,7 +88,7 @@ async function validateAddress(freeform, country) {
             console.log('Address', freeform, country, completedAddress);
             resolve({ address: completedAddress, address_verified: isVerified })
         }).catch(err => {
-            console.error(JSON.stringify(err)
+            console.error(JSON.stringify(err))
             reject(new Error(err))
         })
     })
@@ -136,7 +136,7 @@ async function sendEmail(email, address) {
         }).then(data => {
             resolve(true)
         }).catch(err => {
-            console.error(JSON.stringify(err);
+            console.error(JSON.stringify(err));
             reject(new Error(err))
         })
     });
@@ -157,7 +157,7 @@ async function subscribeToNewsletter(email) {
         }).then(data => {
             resolve(true)
         }).catch(err => {
-            console.error(JSON.stringify(err);
+            console.error(JSON.stringify(err));
             resolve(true)
         })
     })
