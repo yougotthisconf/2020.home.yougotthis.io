@@ -182,7 +182,6 @@ input[type="submit"] {
 }
 
 .address {
-    /* border: 2px solid black; */
     padding: 1em;
     margin-top: 1em;
     background: #d7d7d7;
@@ -222,7 +221,7 @@ dt:not(:first-child) {
 
 @media screen and (max-width: 600px) {
     body {
-        font-size: 1.5em;
+        font-size: 1.25em;
     }
     header {
         flex-direction: column;
@@ -241,6 +240,9 @@ dt:not(:first-child) {
         margin-right: 0;
         height: 3em;
         margin-bottom: 0.5em;
+    }
+    section .top {
+        background-size: 0, 2px 2em;
     }
     .sponsors {
         grid-template-columns: repeat(4, 1fr);
