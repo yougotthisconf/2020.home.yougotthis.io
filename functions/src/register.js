@@ -24,8 +24,8 @@ exports.handler = async (event, context) => {
             return { headers, statusCode: 200, body: JSON.stringify({ error: 'Invalid method' }) }
         }
 
-        const { first_name, last_name, email, address1, locality, postal_code, country, newsletter } = JSON.parse(event.body);
-        const hasProvidedAddress = address1 && locality && postal_code && country;
+        const { first_name, last_name, email, address, country, newsletter } = JSON.parse(event.body);
+        const hasProvidedAddress = address && country;
         
         if(!first_name || !last_name || !email) {
             return { headers, statusCode: 500, body: JSON.stringify({ error: 'You must provide your first name, last name and email.' }) }
@@ -35,7 +35,7 @@ exports.handler = async (event, context) => {
             return { headers, statusCode: 500, body: JSON.stringify({ error: 'You have already registered.' }) }
         } else {
             let fullAddress = false;
-            if(hasProvidedAddress) fullAddress = await validateAddress(address1, locality, postal_code, country);
+            if(hasProvidedAddress) fullAddress = await validateAddress(address, country);
 
             await createAttendee(first_name, last_name, email, fullAddress.address, fullAddress.address_verified);
             await sendEmail(email, fullAddress);
@@ -65,20 +65,17 @@ async function checkIfEmailExists(email) {
     })
 }
 
-async function validateAddress(address1, locality, postal_code, country) {
+async function validateAddress(freeform, country) {
     return new Promise((resolve, reject) => {
         let address = new Lookup();
         address.country = country;
-        address.address1 = address1;
-        address.postal_code = postal_code;
-        address.locality = locality;
+        address.freeform = freeform;
 
         smarty.send(address).then(results => {
             const result = results.result[0];
             const { analysis: { verificationStatus: verify, addressPrecision: precision } } = result;
-            const isVerified = verify == "Verified" && (precision == "Premise" || precision == "DeliveryPoint")
-            
-            let completedAddress = `${address1}, ${locality}, ${postal_code}, ${country}`;
+            const isVerified = verify == "Verified" && (precision == "Premise" || precision == "DeliveryPoint")            
+            let completedAddress = `${address}, ${country}`;
             if(isVerified) {
                 let a = [];
                 for(let i=1; i<13; i++) {

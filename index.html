@@ -176,22 +176,14 @@
                             <input id="email" type="text" v-model="form.email">
                         </div>
                         <div class="address">
-                            <span>If you want us to send you stickers please also fill in all postal address fields below. If not, just leave them all blank.</span>
+                            <span>If you want us to send you stickers please also fill in the postal address fields below. If not, just leave them all blank.</span>
                             <div class="input-group">
-                                <label for="address1">Address Line 1</label>
-                                <input id="add1" type="text" v-model="form.address.address1">
-                            </div>
-                            <div class="input-group">
-                                <label for="city">City</label>
-                                <input id="city" type="text" v-model="form.address.locality">
-                            </div>
-                            <div class="input-group">
-                                <label for="zip">Postal Code</label>
-                                <input id="zip" type="text" v-model="form.address.postal_code">
+                                <label for="address">Full Address</label>
+                                <input id="address" type="text" v-model="form.address">
                             </div>
                             <div class="input-group">
                                 <label for="country">Country</label>
-                                <select v-model="form.address.country" id="country">
+                                <select v-model="form.country" id="country">
                                     <option disabled value="">Please select country</option>
                                     <option v-for="country in countries" :key="country">{{country}}</option>
                                 </select>
