@@ -85,7 +85,7 @@ async function validateAddress(freeform, country) {
                 a.push(country)
                 completedAddress = a.join(', ')
             }
-            
+            console.log('Address is ' + completedAddress);
             resolve({ address: completedAddress, address_verified: isVerified })
         }).catch(err => {
             console.error(err)
