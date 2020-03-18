@@ -60,6 +60,5 @@ const app = new Vue({
         this.submitted = false;
       }) 
     }
-    }
   }
 })
