@@ -166,6 +166,11 @@ input {
     border-color: black;
 }
 
+.input-group.checkbox div * {
+    display: inline-block;
+    width: auto;
+}
+
 input[type="submit"] {
     font-size: 1em;
     background: black;
@@ -176,6 +181,26 @@ input[type="submit"] {
     margin-top: 2em;
 }
 
+.address {
+    /* border: 2px solid black; */
+    padding: 1em;
+    margin-top: 1em;
+    background: #d7d7d7;
+}
+
+.address .input-group input {
+    border-color: #b7b7b7;
+}
+
+.address .input-group input:focus {
+    border-color: black;
+}
+
+.address select {
+    width: 100%;
+    font-size: 1em;
+}
+
 dt {
     font-weight: bold;
 }
@@ -184,7 +209,21 @@ dt:not(:first-child) {
     margin-top: 2em;
 }
 
+.info {
+    margin-top: 1em;
+}
+
+.error {
+    background: red;
+    color: white;
+    padding: 1em;
+    margin-top: 1em;
+}
+
 @media screen and (max-width: 600px) {
+    body {
+        font-size: 1.5em;
+    }
     header {
         flex-direction: column;
         align-items: center;

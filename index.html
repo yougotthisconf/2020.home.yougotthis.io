@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="/assets/style.css">
     <title>You Got This From Home: June 6 2020</title>
     <meta property="og:image" content="https://home.yougotthis.io/assets/og.png">
     <meta property="og:description" content="A free online conference on the non-technical aspects of a happy, healthy work life.">
@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="left">
-            <img src="assets/logo.png" alt="Fist Logo">
+            <img src="/assets/logo.png" alt="Fist Logo">
             <span>You Got This From Home</span>
         </div>
         <div class="right">
@@ -151,6 +151,8 @@
                 <dd>We're asking for sponsorship to cover the cost of paying speakers, live captioning and printing/shipping stickers. We're looking for 4-5 £800 sponsors for which you'll get listed on this site and a 5 minute talk during the day. We'll also ship your stickers with ours and give you a discount on sponsoring our next physical events. If you're interested please <a href="mailto:kevin@yougotthis.io">get in touch</a>.</dd>
                 <dt>Who is behind You Got This From Home?</dt>
                 <dd>Kevin Lewis - who coordinates the You Got This Series and runs You Got This events in the UK, and Shy Ruparel who runs Adulting.Dev in New York.</dd>
+                <dt>I've got another question</dt>
+                <dd>Email Kevin at <a href="mailto:kevin@yougotthis.io">kevin@yougotthis.io</a>.</dd>
             </div>
         </section>
         <section>
@@ -158,46 +160,69 @@
                 <span>Register</span>
             </div>
             <div class="content">
-                <p>Registrations opening really soon. The event is free, but by registering we'll send you the streaming link, get you involved in the social activities in the schedule, and mail you the event stickers! Follow <a href="https://twitter.com/yougotthisconf">@YouGotThisConf</a> on Twitter for updates.</p>
-                <!-- <p>When you register we'll make sure you get streaming link to join the event and mail you stickers from the event.</p>
-                <form>
-                    <div class="input-group">
-                        <label for="fname">First Name</label>
-                        <input id="fname" name="fname" type="text">
+                <p>If you provide your postal address will also send you event stickers.</p>
+                <div id="form">
+                    <div v-if="!submitted && !success">
+                        <div class="input-group">
+                            <label for="fname">First Name *</label>
+                            <input id="fname" type="text" v-model="form.first_name">
+                        </div>
+                        <div class="input-group">
+                            <label for="lname">Last Name *</label>
+                            <input id="lname" type="text" v-model="form.last_name">
+                        </div>
+                        <div class="input-group">
+                            <label for="email" type="email">Email Address *</label>
+                            <input id="email" type="text" v-model="form.email">
+                        </div>
+                        <div class="address">
+                            <span>If you want us to send you stickers please also fill in all postal address fields below. If not, just leave them all blank.</span>
+                            <div class="input-group">
+                                <label for="address1">Address Line 1</label>
+                                <input id="add1" type="text" v-model="form.address.address1">
+                            </div>
+                            <div class="input-group">
+                                <label for="city">City</label>
+                                <input id="city" type="text" v-model="form.address.locality">
+                            </div>
+                            <div class="input-group">
+                                <label for="zip">Postal Code</label>
+                                <input id="zip" type="text" v-model="form.address.postal_code">
+                            </div>
+                            <div class="input-group">
+                                <label for="country">Country</label>
+                                <select v-model="form.address.country" id="country">
+                                    <option disabled value="">Please select country</option>
+                                    <option v-for="country in countries" :key="country">{{country}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group checkbox">
+                            <p>Sign up for the You Got This newsletter</p>
+                            <div>
+                                <input id="newsletter" type="checkbox" v-model="form.newsletter">
+                                <label for="newsletter">Yes please, sign me up</label>
+                            </div>
+                        </div>
+                        <input type="submit" value="Register" @click="submit">
+                        <div v-if="error" class="error">
+                            Error: {{error}}
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label for="lname">Last Name</label>
-                        <input id="lname" name="lname" type="text">
+                    <div v-else-if="submitted && !success" class="info">
+                        <p>Submitting</p>
                     </div>
-                    <div class="input-group">
-                        <label for="email" type="email">Email Address</label>
-                        <input id="email" name="email" type="text">
+                    <div v-else-if="success" class="info">
+                        <p>You have registered succesfully. We'll send you details about the event closer to the time.</p>
+                        <p v-if="response.address && response.verified">We also managed to verify your address - so we're good to go!</p>
+                        <p v-if="response.address && !response.verified">We could not verify your address. We will try our best to get them to you based on the information you provided.</p>
                     </div>
-                    <span>If you want us to send you stickers please also sprovide your address</span>
-                    <div class="input-group">
-                        <label for="add1">Address Line 1</label>
-                        <input id="add1" name="add1" type="text">
-                    </div>
-                    <div class="input-group">
-                        <label for="add2">Address Line 2</label>
-                        <input id="add2" name="add2" type="text">
-                    </div>
-                    <div class="input-group">
-                        <label for="city">City</label>
-                        <input id="city" name="city" type="text">
-                    </div>
-                    <div class="input-group">
-                        <label for="zip">Zip Code</label>
-                        <input id="zip" name="zip" type="text">
-                    </div>
-                    <div class="input-group">
-                        <label for="country">Country</label>
-                        <input id="country" name="country" type="text">
-                    </div>
-                    <input type="submit" value="Register">
-                </form> -->
+                </div>
             </div>
         </section>
     </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="/assets/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,28 @@
+{
+  "name": "ygtfh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "netlify:dev": "netlify-lambda serve functions/src",
+    "netlify:build": "netlify-lambda build functions/src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yougotthisconf/you-got-this-from-home-2020.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yougotthisconf/you-got-this-from-home-2020/issues"
+  },
+  "homepage": "https://github.com/yougotthisconf/you-got-this-from-home-2020#readme",
+  "dependencies": {
+    "airtable": "^0.8.1",
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "netlify-lambda": "^1.6.3",
+    "smartystreets-javascript-sdk": "^1.4.4",
+    "sparkpost": "^2.1.4"
+  }
+}
