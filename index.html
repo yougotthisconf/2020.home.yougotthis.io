@@ -161,10 +161,9 @@
             </div>
             <div class="content">
                 <div id="form">
-                    <p>If you provide your postal address will also send you event stickers.</p>
                     <div v-if="!submitted && !success">
-                        <p>Come back in like an hour - just fixing something. Sorry.</p>
-                        <!-- <div class="input-group">
+                        <p>If you provide your postal address will also send you event stickers.</p>
+                        <div class="input-group">
                             <label for="fname">First Name *</label>
                             <input id="fname" type="text" v-model="form.first_name">
                         </div>
@@ -196,11 +195,11 @@
                                 <input id="newsletter" type="checkbox" v-model="form.newsletter">
                                 <label for="newsletter">Yes please, sign me up</label>
                             </div>
-                        </div> -->
-                        <!-- <input type="submit" value="Register" @click="submit">
+                        </div>
+                        <input type="submit" value="Register" @click="submit">
                         <div v-if="error" class="error">
                             Error: {{error}}
-                        </div> -->
+                        </div>
                     </div>
                     <div v-else-if="submitted && !success" class="info">
                         <p>Submitting</p>

@@ -34,12 +34,15 @@ const app = new Vue({
 
       let payload = { first_name, last_name, email, newsletter };
       if(fullAddress) {
-        payload = { ...payload, country }
+        payload = { ...payload, address, country }
       }
+
+      console.log(payload);
 
       axios({
         method: 'POST',
         url: 'https://home.yougotthis.io/.netlify/functions/register',
+        // url: 'http://localhost:9000/register',
         data: payload
       }).then(({ data }) => {
         if(data.error) {
@@ -56,6 +59,7 @@ const app = new Vue({
         this.error = 'There was an error registering. If this problem persists please email us.'
         this.submitted = false;
       }) 
+    }
     }
   }
 })

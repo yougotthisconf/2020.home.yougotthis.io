@@ -36,7 +36,8 @@ exports.handler = async (event, context) => {
         } else {
             let fullAddress = false;
             if(hasProvidedAddress) fullAddress = await validateAddress(address, country);
-
+            
+            console.log(fullAddress);
             await createAttendee(first_name, last_name, email, fullAddress.address, fullAddress.address_verified);
             await sendEmail(email, fullAddress);
             if(newsletter) await subscribeToNewsletter(email)
