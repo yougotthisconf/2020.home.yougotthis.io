@@ -82,6 +82,7 @@ async function validateAddress(freeform, country) {
                 for(let i=1; i<13; i++) {
                     if(result[`address${i}`]) a.push(result[`address${i}`])
                 }
+                a.push(country)
                 completedAddress = a.join(', ')
             }
             
