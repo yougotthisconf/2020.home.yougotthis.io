@@ -75,15 +75,6 @@ async function validateAddress(freeform, country) {
             const { analysis: { verificationStatus: verify, addressPrecision: precision } } = result;
             const isVerified = verify == "Verified" && (precision == "Premise" || precision == "DeliveryPoint")            
             let completedAddress = `${freeform}, ${country}`;
-            if(isVerified) {
-                let a = [];
-                for(let i=1; i<13; i++) {
-                    if(result[`address${i}`]) a.push(JSON.stringify(result[`address${i}`]))
-                }
-                a.push(country)
-                completedAddress = a.join(', ')
-                
-            }
             resolve({ address: completedAddress, address_verified: isVerified })
         }).catch(err => {
             reject({ address: `${freeform}, ${country}`, address_verified: false })
