@@ -60,8 +60,6 @@ async function checkIfEmailExists(email) {
             filterByFormula: `({email}="${email}")`
         }).eachPage(records => {
             resolve(records.length > 0)
-        }, err => {
-            if (err) { reject(new Error(err)) }
         });
     })
 }
@@ -76,19 +74,19 @@ async function validateAddress(freeform, country) {
             const result = results.result[0];
             const { analysis: { verificationStatus: verify, addressPrecision: precision } } = result;
             const isVerified = verify == "Verified" && (precision == "Premise" || precision == "DeliveryPoint")            
-            let completedAddress = `${address}, ${country}`;
+            let completedAddress = `${freeform}, ${country}`;
             if(isVerified) {
                 let a = [];
                 for(let i=1; i<13; i++) {
-                    if(result[`address${i}`]) a.push(result[`address${i}`])
+                    if(result[`address${i}`]) a.push(JSON.stringify(result[`address${i}`]))
                 }
                 a.push(country)
                 completedAddress = a.join(', ')
+                
             }
             resolve({ address: completedAddress, address_verified: isVerified })
         }).catch(err => {
-            console.error(JSON.stringify(err))
-            reject(new Error(err))
+            reject({ address: `${freeform}, ${country}`, address_verified: false })
         })
     })
 }
@@ -136,7 +134,7 @@ async function sendEmail(email, address) {
             resolve(true)
         }).catch(err => {
             console.error(JSON.stringify(err));
-            reject(new Error(err))
+            resolve(false)
         })
     });
 }
@@ -157,7 +155,7 @@ async function subscribeToNewsletter(email) {
             resolve(true)
         }).catch(err => {
             console.error(JSON.stringify(err));
-            resolve(true)
+            resolve(false)
         })
     })
 }
