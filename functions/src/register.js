@@ -37,7 +37,7 @@ exports.handler = async (event, context) => {
             let fullAddress = false;
             if(hasProvidedAddress) fullAddress = await validateAddress(address, country);
             
-            console.log(fullAddress);
+            console.log(email, JSON.stringify(fullAddress));
             await createAttendee(first_name, last_name, email, fullAddress.address, fullAddress.address_verified);
             await sendEmail(email, fullAddress);
             if(newsletter) await subscribeToNewsletter(email)
@@ -85,7 +85,6 @@ async function validateAddress(freeform, country) {
                 a.push(country)
                 completedAddress = a.join(', ')
             }
-            console.log('Address', freeform, country, completedAddress);
             resolve({ address: completedAddress, address_verified: isVerified })
         }).catch(err => {
             console.error(JSON.stringify(err))
