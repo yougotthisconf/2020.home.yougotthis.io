@@ -5,7 +5,8 @@
 }
 
 body {
-    background-image: url('tile.png');
+    /* background-image: url('tile.png'); */
+    background: #d7d7d7;
     font-family: 'VT323', monospace;
     padding-bottom: 2em;
 }
@@ -88,6 +89,10 @@ section .content {
 
 section .content.table {
     padding: 2px;
+}
+
+.content h1 {
+    margin-bottom: 1rem;
 }
 
 table, thead, tbody, tr, td {
