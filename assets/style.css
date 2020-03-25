@@ -108,7 +108,7 @@ thead tr td {
 }
 
 td {
-    padding: 0.25em 0.75em;
+    padding: 1.25em 0.75em 0.25em;
     vertical-align: top;
 }
 
@@ -118,6 +118,13 @@ td h2 {
 
 td h3 {
     margin: 0.5rem 0;
+}
+
+td p {
+    margin-bottom: 1em;
+}
+td p:last-child {
+    margin-bottom: 0;
 }
 
 thead td {
