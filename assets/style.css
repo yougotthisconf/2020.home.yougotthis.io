@@ -109,6 +109,15 @@ thead tr td {
 
 td {
     padding: 0.25em 0.75em;
+    vertical-align: top;
+}
+
+td h2 {
+    font-size: 1.25em;
+}
+
+td h3 {
+    margin: 0.5rem 0;
 }
 
 thead td {
@@ -270,6 +279,14 @@ dt:not(:first-child) {
     }
     td {
         padding: 0.5em !important;
+    }
+    tr td h2,
+    tr td h3 {
+        font-size: 1em;
+        text-decoration: underline;
+    }
+    tr:last-child td.info {
+        padding-top: 0.5em !important;
     }
     tr td:last-child {
         grid-column: 1/4;
