@@ -7,8 +7,10 @@
 body {
     /* background-image: url('tile.png'); */
     background: #d7d7d7;
-    font-family: 'VT323', monospace;
+    font-family: 'Space Mono', monospace;
     padding-bottom: 2em;
+    font-size: 0.8rem;
+    line-height: 1.25;
 }
 
 a,
@@ -23,6 +25,8 @@ header {
     flex-direction: row;
     justify-content: space-between;
     padding: 0.5em;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
 }
 
 header > * {
@@ -80,6 +84,8 @@ section .top {
 section .top span {
     background: white;
     padding: 0.5em;
+    font-family: 'VT323', monospace;
+    font-size: 1.25rem;
 }
 
 section .content {
@@ -107,13 +113,14 @@ thead tr td {
     border-bottom: 2px solid black;
 }
 
-td {
+tbody td {
     padding: 1.25em 0.75em 0.25em;
     vertical-align: top;
 }
 
 td h2 {
-    font-size: 1.25em;
+    font-size: 2em;
+    font-family: 'VT323', monospace;
 }
 
 td h3 {
@@ -130,6 +137,9 @@ td p:last-child {
 
 thead td {
     font-weight: bold;
+    font-family: 'VT323', monospace;
+    font-size: 1.25rem;
+    padding: 0.75rem
 }
 
 tbody tr:first-child td {
@@ -142,7 +152,7 @@ tbody tr:last-child td {
 
 .sponsors {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     padding: 1em;
 }
 .sponsor {
@@ -156,6 +166,7 @@ tbody tr:last-child td {
     text-align: center;
     font-weight: normal;
     margin-top: 0.25em;
+    font-size: 0.8rem;
 }
 
 form {
@@ -194,13 +205,13 @@ input {
 }
 
 input[type="submit"] {
-    font-size: 1em;
+    font-size: 1.25em;
     background: black;
     border: 0;
     outline: 0;
     color: white;
     padding: 0.25em 0.75em;
-    margin-top: 2em;
+    margin-top: 1em;
 }
 
 .address {
@@ -224,6 +235,8 @@ input[type="submit"] {
 
 dt {
     font-weight: bold;
+    font-family: 'VT323', monospace;
+    font-size: 1.25rem;
 }
 
 dt:not(:first-child) {
@@ -238,9 +251,6 @@ dt:not(:first-child) {
 }
 
 @media screen and (max-width: 600px) {
-    body {
-        font-size: 1.25em;
-    }
     header {
         flex-direction: column;
         align-items: center;
@@ -288,10 +298,11 @@ dt:not(:first-child) {
     td {
         padding: 0.5em !important;
     }
-    tr td h2,
+    tr td h2 {
+        font-size: 1.5em;
+    }
     tr td h3 {
-        font-size: 1em;
-        text-decoration: underline;
+        font-size: 1.25em;
     }
     tr:last-child td.info {
         padding-top: 0.5em !important;
@@ -309,6 +320,9 @@ dt:not(:first-child) {
     }
     td:nth-child(3):after {
         content: ' GMT'
+    }
+    tr:last-child td:nth-child(1):after {
+        content: ''
     }
 }
 
