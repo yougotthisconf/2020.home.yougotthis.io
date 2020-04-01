@@ -71,10 +71,10 @@ section {
 }
 
 section .top {
-    background-image: url('button.svg'), url('lines.svg');
-    background-size: 1.5em, 2px 2em;
-    background-repeat: no-repeat, repeat-x;
-    background-position: 0.25em, center; 
+    background-image: url('lines.svg');
+    background-size: 2px 2em;
+    background-repeat: repeat-x;
+    background-position: center; 
     display: flex;
     flex-direction: row;
     justify-content: center;
