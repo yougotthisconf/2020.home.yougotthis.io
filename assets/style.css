@@ -121,6 +121,7 @@ tbody td {
 td h2 {
     font-size: 2em;
     font-family: 'VT323', monospace;
+    margin-top: -0.25em;
 }
 
 td h3 {
