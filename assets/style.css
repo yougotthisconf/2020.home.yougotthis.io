@@ -251,6 +251,10 @@ dt:not(:first-child) {
     margin-top: 1em;
 }
 
+#intro p {
+    margin-top: 1em;
+}
+
 @media screen and (max-width: 600px) {
     header {
         flex-direction: column;
