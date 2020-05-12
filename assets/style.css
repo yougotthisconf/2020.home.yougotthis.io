@@ -155,6 +155,7 @@ tbody tr:last-child td {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     padding: 1em;
+    grid-gap: 1em;
 }
 .sponsor {
     text-decoration: none;
@@ -255,6 +256,15 @@ dt:not(:first-child) {
     margin-top: 1em;
 }
 
+@media screen and (max-width: 800px) {
+    .sponsor img {
+        max-height: 90px;
+        width: auto;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
 @media screen and (max-width: 600px) {
     header {
         flex-direction: column;
@@ -335,5 +345,6 @@ dt:not(:first-child) {
     .sponsors {
         padding: 1em 0;
         grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1em;
     }
 }
