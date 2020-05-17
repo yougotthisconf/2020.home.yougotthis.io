@@ -175,12 +175,12 @@ form {
 
 }
 
-.input-group {
-    margin-top: 1em;
+.input-group:not(:last-child) {
+    margin-bottom: 1em;
 }
 
 form span {
-    margin-top: 2em;
+    /* margin-top: 2em; */
     display: block;
 }
 
@@ -213,7 +213,6 @@ input[type="submit"] {
     outline: 0;
     color: white;
     padding: 0.25em 0.75em;
-    margin-top: 1em;
 }
 
 .address {

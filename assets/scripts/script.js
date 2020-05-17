@@ -40,7 +40,6 @@ const app = new Vue({
       axios({
         method: 'POST',
         url: 'https://home.yougotthis.io/.netlify/functions/register',
-        // url: 'http://localhost:9000/register',
         data: payload
       }).then(({ data }) => {
         if(data.error) {
