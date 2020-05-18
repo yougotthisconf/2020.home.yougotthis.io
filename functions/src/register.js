@@ -98,7 +98,7 @@ async function sendEmail(email, address) {
         let message = `
             <p>Hey there,</p>
             <p>Thank you so much for registering to take part in You Got This 2020: From Home. We hope you will enjoy the event.</p>
-            <p>Please feel free to share the event with your friends and colleagues so we can positively impact as many people as possible.<p>
+            <p>Please feel free to share the event with your friends and colleagues so we can positively impact as many people as possible. You can also sign up for our <a href="https://yougotthis.io/discord">community Discord server</a> to chat with others and get involved in the event on-the-day.<p>
         `
         if(address && address.address_verified) {
             message += `<p>We'll be sending out stickers closer to the event. We successfully verified your address so there shouldn't be any issues with getting them to you.</p>`
