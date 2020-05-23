@@ -4,11 +4,11 @@ const axios = require('axios')
 
 const base = require('airtable').base(process.env.AIRTABLE_BASE_ID);
 
-const SmartyStreetsSDK = require("smartystreets-javascript-sdk");
-const SmartyStreetsCore = SmartyStreetsSDK.core;
-const Lookup = SmartyStreetsSDK.internationalStreet.Lookup;
-const credentials = new SmartyStreetsCore.StaticCredentials(process.env.SMARTY_AUTH_ID, process.env.SMARTY_AUTH_TOKEN);
-let smarty = SmartyStreetsCore.buildClient.internationalStreet(credentials);
+// const SmartyStreetsSDK = require("smartystreets-javascript-sdk");
+// const SmartyStreetsCore = SmartyStreetsSDK.core;
+// const Lookup = SmartyStreetsSDK.internationalStreet.Lookup;
+// const credentials = new SmartyStreetsCore.StaticCredentials(process.env.SMARTY_AUTH_ID, process.env.SMARTY_AUTH_TOKEN);
+// let smarty = SmartyStreetsCore.buildClient.internationalStreet(credentials);
 
 const SparkPost = require('sparkpost');
 const sparkpost = new SparkPost(process.env.SPARKPOST_API_KEY);
@@ -35,7 +35,7 @@ exports.handler = async (event, context) => {
             return { headers, statusCode: 200, body: JSON.stringify({ error: 'You have already registered.' }) }
         } else {
             let fullAddress = false;
-            if(hasProvidedAddress) fullAddress = await validateAddress(address, country);
+            // if(hasProvidedAddress) fullAddress = await validateAddress(address, country);
             
             console.log(email, JSON.stringify(fullAddress));
             await createAttendee(first_name, last_name, email, fullAddress.address, fullAddress.address_verified);
@@ -64,23 +64,23 @@ async function checkIfEmailExists(email) {
     })
 }
 
-async function validateAddress(freeform, country) {
-    return new Promise((resolve, reject) => {
-        let address = new Lookup();
-        address.country = country;
-        address.freeform = freeform;
+// async function validateAddress(freeform, country) {
+//     return new Promise((resolve, reject) => {
+//         let address = new Lookup();
+//         address.country = country;
+//         address.freeform = freeform;
 
-        smarty.send(address).then(results => {
-            const result = results.result[0];
-            const { analysis: { verificationStatus: verify, addressPrecision: precision } } = result;
-            const isVerified = verify == "Verified" && (precision == "Premise" || precision == "DeliveryPoint")            
-            let completedAddress = `${freeform}, ${country}`;
-            resolve({ address: completedAddress, address_verified: isVerified })
-        }).catch(err => {
-            reject({ address: `${freeform}, ${country}`, address_verified: false })
-        })
-    })
-}
+//         smarty.send(address).then(results => {
+//             const result = results.result[0];
+//             const { analysis: { verificationStatus: verify, addressPrecision: precision } } = result;
+//             const isVerified = verify == "Verified" && (precision == "Premise" || precision == "DeliveryPoint")            
+//             let completedAddress = `${freeform}, ${country}`;
+//             resolve({ address: completedAddress, address_verified: isVerified })
+//         }).catch(err => {
+//             reject({ address: `${freeform}, ${country}`, address_verified: false })
+//         })
+//     })
+// }
 
 async function createAttendee(first_name, last_name, email, address, address_verified) {
     return new Promise((resolve, reject) => {
