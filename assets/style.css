@@ -255,12 +255,30 @@ dt:not(:first-child) {
     margin-top: 1em;
 }
 
+#stream .content {
+    padding: 0;
+}
+
+#stream a {
+    background: black;
+    color: white;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 1em;
+    font-size: 2em;
+}
+
 @media screen and (max-width: 800px) {
     .sponsor img {
         max-height: 90px;
         width: auto;
         margin: 0 auto;
         display: block;
+    }
+    #stream a {
+        line-height: 1.5;
+        font-size: 1.5rem;
     }
 }
 
